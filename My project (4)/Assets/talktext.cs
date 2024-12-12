@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class TalkText : MonoBehaviour
 {
-    public GameObject Speech;
-    public GameObject Speech1;
-    public GameObject Speech2;
+    public GameObject Final1;
+    public GameObject Final2;
+    public GameObject Final3;
 
     void Start()
     {
-        Speech.SetActive(false);
-        Speech1.SetActive(false);
-        Speech2.SetActive(false);
+        Final1.SetActive(false);
+        Final2.SetActive(false);
+        Final3.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            Speech.SetActive(true);
+            Final1.SetActive(true);
             StartCoroutine(WaitForSec());
         }
     }
@@ -29,21 +29,21 @@ public class TalkText : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             StopAllCoroutines();
-            Speech.SetActive(false);
-            Speech1.SetActive(false);
-            Speech2.SetActive(false);
+            Final1.SetActive(false);
+            Final2.SetActive(false);
+            Final3.SetActive(false);
         }
     }
 
     IEnumerator WaitForSec()
     {
         yield return new WaitForSeconds(3);
-        Speech.SetActive(false);
-        Speech1.SetActive(true);
+        Final1.SetActive(false);
+        Final2.SetActive(true);
         yield return new WaitForSeconds(3);
-        Speech1.SetActive(false);
-        Speech2.SetActive(true);
+        Final2.SetActive(false);
+        Final3.SetActive(true);
         yield return new WaitForSeconds(3);
-        Speech2.SetActive(false);
+        Final3.SetActive(false);
     }
 }
